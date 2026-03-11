@@ -1,0 +1,6 @@
+numpy>=1.26
+pandas>=2.2
+scipy>=1.13
+requests>=2.31
+python-dateutil>=2.9
+tqdm>=4.66
