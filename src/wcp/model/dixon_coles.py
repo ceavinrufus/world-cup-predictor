@@ -241,7 +241,7 @@ def fit_dixon_coles(
         args=(n, home_idx, away_idx, x, y, neutral, weights),
         method="L-BFGS-B",
         bounds=bounds,
-        options={"maxiter": max_iter},
+        options={"maxiter": max_iter, "maxfun": max_iter * 100},
     )
 
     if not res.success:
