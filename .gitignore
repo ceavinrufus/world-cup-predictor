@@ -15,6 +15,7 @@ build/
 data/raw/
 data/interim/
 data/processed/*.parquet
+!data/processed/third_place_annex_c.json
 *.pkl
 
 # Notebooks
