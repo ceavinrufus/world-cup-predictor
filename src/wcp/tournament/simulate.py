@@ -29,7 +29,7 @@ import numpy as np
 import pandas as pd
 
 from wcp.config import DEFAULT_N_SIMULATIONS, RANDOM_SEED
-from wcp.model.dixon_coles import DixonColesParams, score_matrix
+from wcp.model.dixon_coles import DixonColesParams, score_matrix as _dc_score_matrix
 from wcp.tournament.bracket import R32_SLOTS, resolve_r32_pairs
 from wcp.tournament.draw import GROUPS, POSITIONS
 from wcp.tournament.standings import GroupResult, TeamRecord, rank_group
@@ -37,10 +37,26 @@ from wcp.tournament.standings import GroupResult, TeamRecord, rank_group
 log = logging.getLogger(__name__)
 
 
+# ── Prediction backend protocol ─────────────────────────────────────
+#
+# Everything the simulator needs is a way to get P(X=x, Y=y) for a
+# match.  Both raw DixonColesParams and the blended variant satisfy
+# this — we just dispatch through _get_matrix.
+
+def _get_matrix(params, home: str, away: str, *, neutral: bool, max_goals: int):
+    """Return a (max_goals+1)² score matrix from either DC or blended params."""
+    fn = getattr(params, "score_matrix", None)
+    if fn is not None:
+        return fn(home, away, neutral=neutral, max_goals=max_goals)
+    return _dc_score_matrix(
+        params, home, away, neutral=neutral, max_goals=max_goals
+    )
+
+
 # ── Match sampling ──────────────────────────────────────────────────
 
 def _sample_score(
-    params: DixonColesParams,
+    params,
     home: str,
     away: str,
     rng: np.random.Generator,
@@ -48,8 +64,8 @@ def _sample_score(
     neutral: bool = True,
     max_goals: int = 10,
 ) -> tuple[int, int]:
-    """Sample a score (x, y) from the DC joint distribution."""
-    matrix = score_matrix(params, home, away, neutral=neutral, max_goals=max_goals)
+    """Sample a score (x, y) from the model's joint distribution."""
+    matrix = _get_matrix(params, home, away, neutral=neutral, max_goals=max_goals)
     flat = matrix.ravel()
     idx = rng.choice(flat.size, p=flat)
     x, y = divmod(int(idx), max_goals + 1)
@@ -57,7 +73,7 @@ def _sample_score(
 
 
 def _sample_knockout(
-    params: DixonColesParams,
+    params,
     home: str,
     away: str,
     rng: np.random.Generator,
@@ -68,21 +84,20 @@ def _sample_knockout(
 ) -> str:
     """Play a knockout match.  Returns the winner's name.
 
-    A tie in 90 minutes goes to a coin-flip biased slightly by the DC
-    home-win vs away-win probability ratio — captures the intuition
-    that the stronger team is a *slight* favourite in shootouts
-    (empirically ~52/48 rather than 50/50 when there's a clear
-    quality gap).
+    A tie in 90 minutes goes to a coin-flip biased slightly by the
+    model's home-win vs away-win probability ratio — captures the
+    intuition that the stronger team is a *slight* favourite in
+    shootouts (empirically ~52/48 rather than 50/50 when there's a
+    clear quality gap).
     """
     x, y = _sample_score(params, home, away, rng, neutral=neutral, max_goals=max_goals)
     if x > y:
         return home
     if y > x:
         return away
-    # Tied — extra time then shootout.  Instead of a full ET model,
-    # nudge the coin toward whichever side has higher pre-match win
-    # probability.  Bias parameter caps the effect.
-    matrix = score_matrix(params, home, away, neutral=neutral, max_goals=max_goals)
+    # Tied — extra time then shootout.  Nudge the coin toward whichever
+    # side has higher pre-match win probability.
+    matrix = _get_matrix(params, home, away, neutral=neutral, max_goals=max_goals)
     p_home = float(np.tril(matrix, -1).sum())
     p_away = float(np.triu(matrix, 1).sum())
     total = p_home + p_away
@@ -104,7 +119,7 @@ _GROUP_FIXTURES: list[tuple[int, int]] = [
 def _simulate_group(
     letter: str,
     teams: list[str],
-    params: DixonColesParams,
+    params,
     np_rng: np.random.Generator,
     py_rng: random.Random,
 ) -> GroupResult:
@@ -143,7 +158,7 @@ def _rank_third_place(
 
 def _play_bracket(
     r32_teams: list[tuple[str, str]],   # 16 pairs
-    params: DixonColesParams,
+    params,
     np_rng: np.random.Generator,
 ) -> dict[str, list[str]]:
     """Play the entire knockout tree.  Returns a dict of stage → advancers.
@@ -305,13 +320,18 @@ def _pos_to_team(code: str, group_results: dict[str, GroupResult]) -> str:
 
 
 def simulate_tournament(
-    params: DixonColesParams,
+    params,
     n_sims: int = DEFAULT_N_SIMULATIONS,
     *,
     seed: int = RANDOM_SEED,
     progress: bool = False,
 ) -> SimulationTally:
-    """Run ``n_sims`` full-tournament Monte Carlo simulations."""
+    """Run ``n_sims`` full-tournament Monte Carlo simulations.
+
+    ``params`` can be either a :class:`DixonColesParams` or a
+    :class:`~wcp.model.blend.BlendedParams` — the simulator uses
+    duck-typing on ``.score_matrix(home, away, neutral, max_goals)``.
+    """
     np_rng = np.random.default_rng(seed)
     py_rng = random.Random(seed)
 
