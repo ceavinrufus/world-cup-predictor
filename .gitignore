@@ -33,3 +33,4 @@ models/*.joblib
 models/*.pkl
 outputs/*.json
 outputs/*.csv
+!outputs/blend_sweep.csv
