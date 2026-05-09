@@ -30,8 +30,14 @@ TRAINING_CUTOFF: date = date(2026, 6, 10)
 
 # ── Model hyper-parameters ──────────────────────────────────────────
 # Time-decay half-life for match weights (Dixon-Coles ξ).
-# 100 days ≈ ξ ≈ 0.0069. Tuned on backtest but sensible default.
-TIME_DECAY_HALF_LIFE_DAYS: float = 180.0
+# Tuned on WC 2018 + WC 2022 backtest (see outputs/blend_sweep.csv).
+# 730 days = ~2 years.  Blended with Elo prior (λ=0.4), this beats
+# pure-DC at both half-lives and Pinnacle-style random baseline.
+TIME_DECAY_HALF_LIFE_DAYS: float = 730.0
+
+# Default weight on Elo prior in the linear pool.
+# 0 = pure Dixon-Coles, 1 = pure Elo.
+DEFAULT_BLEND_LAMBDA: float = 0.4
 
 # Monte Carlo simulation count for the full bracket.
 DEFAULT_N_SIMULATIONS: int = 100_000

@@ -1,0 +1,63 @@
+INFO fitting WC2018 @ half_life=90
+INFO fitting on 7644 matches | 260 teams (min 8 apps)
+INFO fit done | γ=0.314  ρ=-0.178  -logL=18660.9  iters=540
+INFO fitting WC2022 @ half_life=90
+INFO fitting on 7196 matches | 251 teams (min 8 apps)
+INFO fit done | γ=0.240  ρ=0.029  -logL=17449.2  iters=536
+INFO hl=90 λ=0.00 | avg_log_loss=1.0515 | avg_brier=0.6087
+INFO hl=90 λ=0.20 | avg_log_loss=1.0160 | avg_brier=0.5938
+INFO hl=90 λ=0.30 | avg_log_loss=1.0055 | avg_brier=0.5887
+INFO hl=90 λ=0.40 | avg_log_loss=0.9983 | avg_brier=0.5853
+INFO hl=90 λ=0.50 | avg_log_loss=0.9938 | avg_brier=0.5834
+INFO hl=90 λ=0.70 | avg_log_loss=0.9925 | avg_brier=0.5845
+INFO hl=90 λ=1.00 | avg_log_loss=1.0108 | avg_brier=0.5981
+INFO fitting WC2018 @ half_life=180
+INFO fitting on 7644 matches | 260 teams (min 8 apps)
+INFO fit done | γ=0.307  ρ=-0.111  -logL=19784.1  iters=507
+INFO fitting WC2022 @ half_life=180
+INFO fitting on 7196 matches | 251 teams (min 8 apps)
+WARNING optimizer did not fully converge: STOP: TOTAL NO. OF F,G EVALUATIONS EXCEEDS LIMIT
+INFO fit done | γ=0.250  ρ=0.003  -logL=18277.4  iters=899
+INFO hl=180 λ=0.00 | avg_log_loss=1.0208 | avg_brier=0.5922
+INFO hl=180 λ=0.20 | avg_log_loss=1.0026 | avg_brier=0.5853
+INFO hl=180 λ=0.30 | avg_log_loss=0.9972 | avg_brier=0.5833
+INFO hl=180 λ=0.40 | avg_log_loss=0.9937 | avg_brier=0.5824
+INFO hl=180 λ=0.50 | avg_log_loss=0.9921 | avg_brier=0.5825
+INFO hl=180 λ=0.70 | avg_log_loss=0.9939 | avg_brier=0.5857
+INFO hl=180 λ=1.00 | avg_log_loss=1.0108 | avg_brier=0.5981
+INFO fitting WC2018 @ half_life=365
+INFO fitting on 7644 matches | 260 teams (min 8 apps)
+INFO fit done | γ=0.296  ρ=-0.078  -logL=20416.2  iters=274
+INFO fitting WC2022 @ half_life=365
+INFO fitting on 7196 matches | 251 teams (min 8 apps)
+INFO fit done | γ=0.256  ρ=-0.016  -logL=18796.5  iters=474
+INFO hl=365 λ=0.00 | avg_log_loss=1.0038 | avg_brier=0.5840
+INFO hl=365 λ=0.20 | avg_log_loss=0.9946 | avg_brier=0.5809
+INFO hl=365 λ=0.30 | avg_log_loss=0.9920 | avg_brier=0.5805
+INFO hl=365 λ=0.40 | avg_log_loss=0.9907 | avg_brier=0.5808
+INFO hl=365 λ=0.50 | avg_log_loss=0.9906 | avg_brier=0.5818
+INFO hl=365 λ=0.70 | avg_log_loss=0.9942 | avg_brier=0.5861
+INFO hl=365 λ=1.00 | avg_log_loss=1.0108 | avg_brier=0.5981
+INFO fitting WC2018 @ half_life=730
+INFO fitting on 7644 matches | 260 teams (min 8 apps)
+INFO fit done | γ=0.291  ρ=-0.066  -logL=20734.9  iters=230
+INFO fitting WC2022 @ half_life=730
+INFO fitting on 7196 matches | 251 teams (min 8 apps)
+INFO fit done | γ=0.261  ρ=-0.026  -logL=19147.8  iters=345
+INFO hl=730 λ=0.00 | avg_log_loss=0.9936 | avg_brier=0.5787
+INFO hl=730 λ=0.20 | avg_log_loss=0.9884 | avg_brier=0.5775
+INFO hl=730 λ=0.30 | avg_log_loss=0.9873 | avg_brier=0.5778
+INFO hl=730 λ=0.40 | avg_log_loss=0.9872 | avg_brier=0.5788
+INFO hl=730 λ=0.50 | avg_log_loss=0.9881 | avg_brier=0.5804
+INFO hl=730 λ=0.70 | avg_log_loss=0.9932 | avg_brier=0.5856
+INFO hl=730 λ=1.00 | avg_log_loss=1.0108 | avg_brier=0.5981
+
+saved → outputs/blend_sweep.csv
+
+Top 5 configs by avg_log_loss:
+ half_life_days  lambda  avg_log_loss  avg_brier  avg_accuracy  n_total  WC2018_log_loss  WC2018_n  WC2022_log_loss  WC2022_n
+          730.0     0.4      0.987206   0.578823      0.550840      152         0.953618        65         1.020794        87
+          730.0     0.3      0.987303   0.577841      0.550840      152         0.951461        65         1.023145        87
+          730.0     0.5      0.988129   0.580442      0.550840      152         0.956766        65         1.019492        87
+          730.0     0.2      0.988398   0.577497      0.560477      152         0.950247        65         1.026548        87
+          365.0     0.5      0.990605   0.581819      0.554730      152         0.957323        65         1.023887        87
