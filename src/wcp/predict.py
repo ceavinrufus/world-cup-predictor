@@ -139,6 +139,7 @@ def main(argv: list[str] | None = None) -> None:
     probs = tally.probabilities()
     group_probs = tally.group_probabilities()
     matches = _group_fixture_predictions(predictor)
+    modal_bracket = tally.modal_bracket()
 
     meta = {
         "generated_at": args.generated_at or datetime.now().isoformat(timespec="seconds"),
@@ -157,6 +158,7 @@ def main(argv: list[str] | None = None) -> None:
     out_groups = OUTPUT_DIR / "group_standings.json"
     out_matches = OUTPUT_DIR / "match_predictions.json"
     out_elo = OUTPUT_DIR / "elo_snapshot.json"
+    out_bracket = OUTPUT_DIR / "modal_bracket.json"
 
     with open(out_summary, "w") as f:
         json.dump(
@@ -175,6 +177,8 @@ def main(argv: list[str] | None = None) -> None:
         )
     with open(out_matches, "w") as f:
         json.dump({"meta": meta, "matches": matches}, f, indent=2)
+    with open(out_bracket, "w") as f:
+        json.dump({"meta": meta, "bracket": modal_bracket}, f, indent=2)
     with open(out_elo, "w") as f:
         json.dump(
             {
@@ -190,6 +194,7 @@ def main(argv: list[str] | None = None) -> None:
     log.info("  %s", out_summary)
     log.info("  %s", out_groups)
     log.info("  %s", out_matches)
+    log.info("  %s", out_bracket)
     log.info("  %s", out_elo)
 
     print(_human_summary(probs, top=15))
@@ -204,6 +209,15 @@ def main(argv: list[str] | None = None) -> None:
         for _, r in picks.iterrows():
             line += f"  {r['team']} ({r['p_advance']*100:5.1f}%)"
         print(line)
+
+    print("\n=== Modal bracket (most-likely pairings, picked independently per round) ===")
+    for round_name, entries in modal_bracket.items():
+        if not entries:
+            continue
+        print(f"\n{round_name.replace('_', ' ').title()}:")
+        for e in entries:
+            p = e["p_this_pairing"] * 100
+            print(f"  {e['match']:>10s}:  {e['home']:<20s} vs {e['away']:<20s}  ({p:4.1f}%)")
 
 
 if __name__ == "__main__":

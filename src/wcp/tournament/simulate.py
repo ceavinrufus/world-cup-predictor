@@ -4,16 +4,19 @@ Given a fitted Dixon-Coles model + the WC 2026 group draw, run Monte
 Carlo simulations of the entire tournament.  Each simulation:
 
 1. Simulates all group matches by sampling from the joint DC score
-   distribution.  All group matches are treated as neutral-venue for
-   this baseline model; a host bump can be added in a later phase.
+   distribution.  Host countries (USA, Mexico, Canada) get the model's
+   home-advantage γ when they are the ``home_team`` slot in the fixture;
+   every other match is played on a neutral venue.
 2. Ranks each group per FIFA tiebreakers → identifies winners /
    runners-up / third-placed teams.
 3. Ranks the 12 third-placed teams cross-group; takes the top 8.
 4. Looks up the R32 pairings via Annex C.
-5. Plays R32 → R16 → QF → SF → Final, using single-elimination.
-   Draws in knockouts trigger a penalty-shootout coin-flip (with a
-   small skill-weighting toward the stronger team).
-6. Records final standings.
+5. Plays R32 → R16 → QF → SF → Final, using single-elimination.  Hosts
+   still enjoy a *partial* home advantage — the schedule places host
+   knockout matches in their own country when possible.
+6. Records final standings AND per-match, per-round matchup counts so
+   we can export the modal bracket (the most-probable path through the
+   tournament).
 
 Aggregating over many simulations yields calibrated probabilities.
 """
@@ -28,7 +31,7 @@ from typing import Iterator
 import numpy as np
 import pandas as pd
 
-from wcp.config import DEFAULT_N_SIMULATIONS, RANDOM_SEED
+from wcp.config import DEFAULT_N_SIMULATIONS, HOST_COUNTRIES, RANDOM_SEED
 from wcp.model.dixon_coles import DixonColesParams, score_matrix as _dc_score_matrix
 from wcp.tournament.bracket import R32_SLOTS, resolve_r32_pairs
 from wcp.tournament.draw import GROUPS, POSITIONS
@@ -51,6 +54,60 @@ def _get_matrix(params, home: str, away: str, *, neutral: bool, max_goals: int):
     return _dc_score_matrix(
         params, home, away, neutral=neutral, max_goals=max_goals
     )
+
+
+# ── Host-advantage helper ───────────────────────────────────────────
+
+_HOSTS = frozenset(HOST_COUNTRIES)
+
+
+def _is_host_home(home: str, away: str) -> bool:
+    """True when ``home`` is a host and ``away`` isn't.
+
+    A host-vs-host meeting resolves to neutral: they're both at home.
+    """
+    return home in _HOSTS and away not in _HOSTS
+
+
+def _knockout_neutral(home: str, away: str) -> bool:
+    """Neutral flag for a knockout match.
+
+    Once the bracket starts, matches happen at pre-scheduled venues.
+    FIFA loaded the R16/QF/SF/F stadia into the USA where hosts get a
+    natural bump but visitors are in their own continent (Mexico plays
+    the R16 in Mexico City, though — that's a real home game).
+
+    Approximation: treat a knockout match as home for a host team
+    (i.e. NOT neutral) with roughly half the effect a group match has.
+    We implement that by using the half-γ score matrix returned by
+    :func:`_get_matrix_partial_ha` below.
+    """
+    return not _is_host_home(home, away)
+
+
+def _get_matrix_partial_ha(
+    params,
+    home: str,
+    away: str,
+    *,
+    max_goals: int,
+    ha_scale: float,
+) -> np.ndarray:
+    """Score matrix with home advantage scaled by ``ha_scale``.
+
+    ha_scale=0 → neutral, ha_scale=1 → full home venue.
+    We compute the two endpoints and linearly interpolate their
+    outcome-marginal probabilities, keeping DC's goal-distribution
+    shape.
+    """
+    neutral_mat = _get_matrix(params, home, away, neutral=True, max_goals=max_goals)
+    if ha_scale <= 0.0:
+        return neutral_mat
+    home_mat = _get_matrix(params, home, away, neutral=False, max_goals=max_goals)
+    if ha_scale >= 1.0:
+        return home_mat
+    mix = (1 - ha_scale) * neutral_mat + ha_scale * home_mat
+    return mix / mix.sum()
 
 
 # ── Match sampling ──────────────────────────────────────────────────
@@ -78,26 +135,29 @@ def _sample_knockout(
     away: str,
     rng: np.random.Generator,
     *,
-    neutral: bool = True,
+    ha_scale: float = 0.5,
     max_goals: int = 10,
     shootout_bias: float = 0.06,
 ) -> str:
     """Play a knockout match.  Returns the winner's name.
 
-    A tie in 90 minutes goes to a coin-flip biased slightly by the
-    model's home-win vs away-win probability ratio — captures the
-    intuition that the stronger team is a *slight* favourite in
-    shootouts (empirically ~52/48 rather than 50/50 when there's a
-    clear quality gap).
+    Applies host-advantage at ``ha_scale`` strength (default 0.5 = half
+    of a full home-venue effect) when ``home`` is a host and ``away``
+    isn't.  Everyone else plays neutral.
     """
-    x, y = _sample_score(params, home, away, rng, neutral=neutral, max_goals=max_goals)
+    scale = ha_scale if _is_host_home(home, away) else 0.0
+    matrix = _get_matrix_partial_ha(
+        params, home, away, max_goals=max_goals, ha_scale=scale
+    )
+    flat = matrix.ravel()
+    idx = rng.choice(flat.size, p=flat)
+    x, y = divmod(int(idx), max_goals + 1)
+
     if x > y:
         return home
     if y > x:
         return away
-    # Tied — extra time then shootout.  Nudge the coin toward whichever
-    # side has higher pre-match win probability.
-    matrix = _get_matrix(params, home, away, neutral=neutral, max_goals=max_goals)
+    # Tied — nudge coin toward higher pre-match win prob.
     p_home = float(np.tril(matrix, -1).sum())
     p_away = float(np.triu(matrix, 1).sum())
     total = p_home + p_away
@@ -127,7 +187,10 @@ def _simulate_group(
     matches: list[tuple[str, str, int, int]] = []
     for i, j in _GROUP_FIXTURES:
         home, away = teams[i], teams[j]
-        x, y = _sample_score(params, home, away, np_rng, neutral=True)
+        # Host countries get full γ when they're the home slot in their
+        # group's fixture list.  Everything else is neutral.
+        neutral = not _is_host_home(home, away)
+        x, y = _sample_score(params, home, away, np_rng, neutral=neutral)
         records[home].apply(x, y)
         records[away].apply(y, x)
         matches.append((home, away, x, y))
@@ -169,7 +232,7 @@ def _play_bracket(
 
     def play_round(pairs: list[tuple[str, str]]) -> list[str]:
         return [
-            _sample_knockout(params, a, b, np_rng, neutral=True)
+            _sample_knockout(params, a, b, np_rng)
             for a, b in pairs
         ]
 
@@ -190,7 +253,7 @@ def _play_bracket(
     finalists = play_round(sf_pairs)
     stages["sf_winners"] = finalists
 
-    champion = _sample_knockout(params, finalists[0], finalists[1], np_rng, neutral=True)
+    champion = _sample_knockout(params, finalists[0], finalists[1], np_rng)
     stages["champion"] = [champion]
     return stages
 
@@ -206,6 +269,15 @@ class SimulationTally:
         default_factory=lambda: defaultdict(Counter)
     )
     stage_reached: dict[str, Counter[str]] = field(
+        default_factory=lambda: defaultdict(Counter)
+    )
+    # For modal-bracket export: how often each team occupies each slot.
+    slot_occupants: dict[str, Counter[str]] = field(
+        default_factory=lambda: defaultdict(Counter)
+    )
+    # Per-slot pairing counts — helpful for the modal bracket
+    # (which two teams most often meet in QF2, say?).
+    slot_pairings: dict[str, Counter[tuple[str, str]]] = field(
         default_factory=lambda: defaultdict(Counter)
     )
 
@@ -224,6 +296,7 @@ class SimulationTally:
         group_results: dict[str, GroupResult],
         advancing_thirds: list[str],
         bracket: dict[str, list[str]],
+        r32_teams: list[tuple[str, str]],
     ) -> None:
         self.n_sims += 1
 
@@ -238,12 +311,12 @@ class SimulationTally:
                 self.stage_reached[rec.team]["group_stage"] += 1
 
         # R32 = top-2 from each group + 8 advancing thirds
-        r32_teams = [
+        r32_advance = [
             gr.standings[0].team for gr in group_results.values()
         ] + [
             gr.standings[1].team for gr in group_results.values()
         ] + list(advancing_thirds)
-        for t in r32_teams:
+        for t in r32_advance:
             self.stage_reached[t]["round_of_32"] += 1
 
         for t in bracket["r32_winners"]:
@@ -256,6 +329,25 @@ class SimulationTally:
             self.stage_reached[t]["final"] += 1
         for t in bracket["champion"]:
             self.stage_reached[t]["champion"] += 1
+
+        # Slot occupancy for the modal bracket.
+        # R32 slots numbered 1..16 (matches M73-M88).
+        for i, (a, b) in enumerate(r32_teams, start=1):
+            self.slot_pairings[f"R32_M{72 + i}"][(a, b)] += 1
+            self.slot_occupants[f"R32_M{72 + i}_home"][a] += 1
+            self.slot_occupants[f"R32_M{72 + i}_away"][b] += 1
+        # R16 pairs
+        r16_pairs = list(zip(bracket["r32_winners"][0::2], bracket["r32_winners"][1::2]))
+        for i, (a, b) in enumerate(r16_pairs, start=1):
+            self.slot_pairings[f"R16_M{i}"][(a, b)] += 1
+        qf_pairs = list(zip(bracket["r16_winners"][0::2], bracket["r16_winners"][1::2]))
+        for i, (a, b) in enumerate(qf_pairs, start=1):
+            self.slot_pairings[f"QF_M{i}"][(a, b)] += 1
+        sf_pairs = list(zip(bracket["qf_winners"][0::2], bracket["qf_winners"][1::2]))
+        for i, (a, b) in enumerate(sf_pairs, start=1):
+            self.slot_pairings[f"SF_M{i}"][(a, b)] += 1
+        finalists = bracket["sf_winners"]
+        self.slot_pairings["FINAL"][(finalists[0], finalists[1])] += 1
 
     def probabilities(self) -> pd.DataFrame:
         rows = []
@@ -289,6 +381,75 @@ class SimulationTally:
                     }
                 )
         return pd.DataFrame(rows)
+
+    def modal_bracket(self) -> dict[str, list[dict]]:
+        """Return the *most-likely* bracket walk.
+
+        For each slot, pick the modal pair — the pairing that came up
+        most often across sims.  Note the picks aren't jointly modal —
+        each round is picked independently, so the "modal R16 match"
+        may not use the "modal R32 winners".  That's the standard way
+        prediction sites present it.
+        """
+        def _stage(prefix: str, n_matches: int) -> list[dict]:
+            out = []
+            for i in range(1, n_matches + 1):
+                key = f"{prefix}_M{i}"
+                counter = self.slot_pairings.get(key, Counter())
+                if not counter:
+                    continue
+                (a, b), count = counter.most_common(1)[0]
+                out.append(
+                    {
+                        "match": key,
+                        "home": a,
+                        "away": b,
+                        "p_this_pairing": count / self.n_sims,
+                    }
+                )
+            return out
+
+        r32 = []
+        for i in range(1, 17):
+            key = f"R32_M{72 + i}"
+            counter = self.slot_pairings.get(key, Counter())
+            if not counter:
+                continue
+            (a, b), count = counter.most_common(1)[0]
+            r32.append(
+                {
+                    "match": key,
+                    "home": a,
+                    "away": b,
+                    "p_this_pairing": count / self.n_sims,
+                }
+            )
+
+        r16 = _stage("R16", 8)
+        qf = _stage("QF", 4)
+        sf = _stage("SF", 2)
+
+        # Final
+        final_pair_counter = self.slot_pairings.get("FINAL", Counter())
+        final_entry = []
+        if final_pair_counter:
+            (a, b), count = final_pair_counter.most_common(1)[0]
+            final_entry.append(
+                {
+                    "match": "FINAL",
+                    "home": a,
+                    "away": b,
+                    "p_this_pairing": count / self.n_sims,
+                }
+            )
+
+        return {
+            "round_of_32": r32,
+            "round_of_16": r16,
+            "quarter_finals": qf,
+            "semi_finals": sf,
+            "final": final_entry,
+        }
 
 
 def _resolve_position_codes(
@@ -331,6 +492,10 @@ def simulate_tournament(
     ``params`` can be either a :class:`DixonColesParams` or a
     :class:`~wcp.model.blend.BlendedParams` — the simulator uses
     duck-typing on ``.score_matrix(home, away, neutral, max_goals)``.
+
+    Host countries (USA, Mexico, Canada) are given the model's home-
+    advantage γ for group-stage matches where they are the home side,
+    and half-γ in knockout matches against non-hosts.
     """
     np_rng = np.random.default_rng(seed)
     py_rng = random.Random(seed)
@@ -360,6 +525,6 @@ def simulate_tournament(
         # 4. Play knockouts
         bracket = _play_bracket(r32_teams, params, np_rng)
 
-        tally.record(gres, advancing_thirds, bracket)
+        tally.record(gres, advancing_thirds, bracket, r32_teams)
 
     return tally
