@@ -96,6 +96,11 @@ def main(argv: list[str] | None = None) -> None:
                     help="Min matches per team to include in DC fit")
     ap.add_argument("--lookback-years", type=int, default=6)
     ap.add_argument("--seed", type=int, default=RANDOM_SEED)
+    ap.add_argument(
+        "--generated-at",
+        default=None,
+        help="ISO timestamp to record in output metadata (default: now)",
+    )
     args = ap.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -136,7 +141,7 @@ def main(argv: list[str] | None = None) -> None:
     matches = _group_fixture_predictions(predictor)
 
     meta = {
-        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "generated_at": args.generated_at or datetime.now().isoformat(timespec="seconds"),
         "training_cutoff": str(TRAINING_CUTOFF),
         "n_simulations": args.n,
         "seed": args.seed,
