@@ -1,0 +1,1696 @@
+{
+  "meta": {
+    "generated_at": "2026-06-10T22:00:00+07:00",
+    "training_cutoff": "2026-06-10",
+    "n_simulations": 25000,
+    "seed": 20260611,
+    "blend_lambda": 0.4,
+    "half_life_days": 730.0,
+    "min_matches_per_team": 8,
+    "lookback_years": 6,
+    "n_training_matches": 6031,
+    "n_teams_in_dc_fit": 218
+  },
+  "ratings": [
+    {
+      "team": "Spain",
+      "elo": 2220.6027280978155,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "Argentina",
+      "elo": 2191.0970709930516,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "France",
+      "elo": 2126.509394990514,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "England",
+      "elo": 2092.221571143555,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "Brazil",
+      "elo": 2070.023354128326,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Colombia",
+      "elo": 2064.866736764319,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Portugal",
+      "elo": 2047.9184287743499,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "Ecuador",
+      "elo": 2028.6792951591622,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Netherlands",
+      "elo": 2012.3666999094312,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "Germany",
+      "elo": 2006.3238213420434,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Japan",
+      "elo": 1994.4992137882232,
+      "last_match": "2026-05-31"
+    },
+    {
+      "team": "Morocco",
+      "elo": 1985.815324983006,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Mexico",
+      "elo": 1980.8689753018245,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Uruguay",
+      "elo": 1976.47811809855,
+      "last_match": "2026-03-31"
+    },
+    {
+      "team": "Norway",
+      "elo": 1973.2225330242284,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "T\u00fcrkiye",
+      "elo": 1971.183657254387,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Croatia",
+      "elo": 1970.9869132462748,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Belgium",
+      "elo": 1958.426747110372,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Switzerland",
+      "elo": 1957.700578574978,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Italy",
+      "elo": 1930.3963642004906,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Denmark",
+      "elo": 1930.2924292189703,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Paraguay",
+      "elo": 1919.5898095337825,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Senegal",
+      "elo": 1914.4444557388374,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Australia",
+      "elo": 1901.5293210024001,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Canada",
+      "elo": 1899.779993033239,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Iran",
+      "elo": 1897.8916481688002,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Austria",
+      "elo": 1891.7824173807967,
+      "last_match": "2026-06-01"
+    },
+    {
+      "team": "Algeria",
+      "elo": 1885.2379975786364,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "Nigeria",
+      "elo": 1883.0904147848944,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "South Korea",
+      "elo": 1881.9084529797085,
+      "last_match": "2026-06-03"
+    },
+    {
+      "team": "Panama",
+      "elo": 1855.1074603820643,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Scotland",
+      "elo": 1845.9350413903792,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Ukraine",
+      "elo": 1843.0380099155088,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Russia",
+      "elo": 1841.864429411193,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "United States",
+      "elo": 1827.812076671228,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Venezuela",
+      "elo": 1824.8092721287278,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Uzbekistan",
+      "elo": 1821.340179122675,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "Ivory Coast",
+      "elo": 1815.335151216049,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Egypt",
+      "elo": 1811.062635559518,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Jersey",
+      "elo": 1805.3163694975433,
+      "last_match": "2025-07-18"
+    },
+    {
+      "team": "Greece",
+      "elo": 1804.8706308568933,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Chile",
+      "elo": 1804.2875171415535,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Czechoslovakia",
+      "elo": 1803.942633093551,
+      "last_match": "1993-11-17"
+    },
+    {
+      "team": "Czech Republic",
+      "elo": 1803.792237473519,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Serbia",
+      "elo": 1803.430707443247,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Basque Country",
+      "elo": 1802.0732411422537,
+      "last_match": "2025-11-15"
+    },
+    {
+      "team": "Jordan",
+      "elo": 1776.3059198886688,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Kosovo",
+      "elo": 1773.654425553312,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Peru",
+      "elo": 1773.01927598102,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "Poland",
+      "elo": 1772.5577410593457,
+      "last_match": "2026-06-03"
+    },
+    {
+      "team": "Sweden",
+      "elo": 1772.3863995230959,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Hungary",
+      "elo": 1769.501508282516,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "DR Congo",
+      "elo": 1764.10793898419,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Republic of Ireland",
+      "elo": 1762.6201705088217,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Northern Cyprus",
+      "elo": 1754.9714597346642,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Costa Rica",
+      "elo": 1745.980305962766,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "Guernsey",
+      "elo": 1745.7128227706132,
+      "last_match": "2023-07-13"
+    },
+    {
+      "team": "Wales",
+      "elo": 1744.857740723103,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Slovenia",
+      "elo": 1740.1755628143824,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Iraq",
+      "elo": 1738.94389667871,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Tunisia",
+      "elo": 1738.9196291200699,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "German DR",
+      "elo": 1731.421899284457,
+      "last_match": "1990-09-12"
+    },
+    {
+      "team": "Slovakia",
+      "elo": 1726.819951770171,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Cameroon",
+      "elo": 1724.8679203249305,
+      "last_match": "2026-03-31"
+    },
+    {
+      "team": "New Zealand",
+      "elo": 1720.3710812489385,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Bolivia",
+      "elo": 1718.3127697092214,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "Georgia",
+      "elo": 1712.399816649094,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Honduras",
+      "elo": 1711.7613223396609,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Isle of Man",
+      "elo": 1709.1959435465674,
+      "last_match": "2025-07-18"
+    },
+    {
+      "team": "Mali",
+      "elo": 1708.8044367484235,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Haiti",
+      "elo": 1707.5903047464767,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Israel",
+      "elo": 1702.7178345628827,
+      "last_match": "2026-06-03"
+    },
+    {
+      "team": "Romania",
+      "elo": 1702.456054825507,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Saudi Arabia",
+      "elo": 1693.8804127844028,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Occitania",
+      "elo": 1684.2714594131107,
+      "last_match": "2014-12-30"
+    },
+    {
+      "team": "Albania",
+      "elo": 1675.4276975469925,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "United Arab Emirates",
+      "elo": 1666.0139889830396,
+      "last_match": "2025-12-15"
+    },
+    {
+      "team": "Northern Ireland",
+      "elo": 1664.2292391970248,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "South Africa",
+      "elo": 1663.8347033131217,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Padania",
+      "elo": 1660.833624688698,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Isle of Wight",
+      "elo": 1660.2062426838206,
+      "last_match": "2023-07-13"
+    },
+    {
+      "team": "Jamaica",
+      "elo": 1659.3765190934982,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Catalonia",
+      "elo": 1656.517789886633,
+      "last_match": "2019-03-25"
+    },
+    {
+      "team": "Cape Verde",
+      "elo": 1654.4201653825799,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Bosnia and Herzegovina",
+      "elo": 1653.5563409427707,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Burkina Faso",
+      "elo": 1652.3612532895936,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "North Macedonia",
+      "elo": 1651.29084718789,
+      "last_match": "2026-06-01"
+    },
+    {
+      "team": "Guatemala",
+      "elo": 1648.2539953514238,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Iraqi Kurdistan",
+      "elo": 1644.2254903753478,
+      "last_match": "2016-06-04"
+    },
+    {
+      "team": "Ynys M\u00f4n",
+      "elo": 1639.9032314565209,
+      "last_match": "2025-07-17"
+    },
+    {
+      "team": "Iceland",
+      "elo": 1631.1552371135012,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Abkhazia",
+      "elo": 1627.8445241639793,
+      "last_match": "2019-06-08"
+    },
+    {
+      "team": "Ghana",
+      "elo": 1626.0905575905467,
+      "last_match": "2026-06-02"
+    },
+    {
+      "team": "K\u00e1rp\u00e1talja",
+      "elo": 1607.5450061870722,
+      "last_match": "2018-06-09"
+    },
+    {
+      "team": "Cura\u00e7ao",
+      "elo": 1606.7603856608764,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Finland",
+      "elo": 1600.992437020797,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "New Caledonia",
+      "elo": 1600.1327402403133,
+      "last_match": "2026-03-26"
+    },
+    {
+      "team": "Syria",
+      "elo": 1599.6606393790164,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Kernow",
+      "elo": 1595.2482792806306,
+      "last_match": "2023-07-16"
+    },
+    {
+      "team": "Andalusia",
+      "elo": 1592.8607687967478,
+      "last_match": "2013-06-07"
+    },
+    {
+      "team": "Rhodes",
+      "elo": 1591.4955930987262,
+      "last_match": "2011-06-27"
+    },
+    {
+      "team": "Suriname",
+      "elo": 1591.3226485956948,
+      "last_match": "2026-03-26"
+    },
+    {
+      "team": "County of Nice",
+      "elo": 1590.770846425726,
+      "last_match": "2015-06-21"
+    },
+    {
+      "team": "Angola",
+      "elo": 1589.55977790606,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Palestine",
+      "elo": 1588.8812082219658,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Tamil Eelam",
+      "elo": 1586.778637396311,
+      "last_match": "2025-07-04"
+    },
+    {
+      "team": "Belarus",
+      "elo": 1586.5541101676197,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Panjab",
+      "elo": 1585.2759482207982,
+      "last_match": "2019-12-29"
+    },
+    {
+      "team": "R\u00e9union",
+      "elo": 1582.4653368884094,
+      "last_match": "2023-09-02"
+    },
+    {
+      "team": "Guinea",
+      "elo": 1578.7711047245211,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Oman",
+      "elo": 1574.5958689482648,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Ellan Vannin",
+      "elo": 1569.4066234661561,
+      "last_match": "2018-06-03"
+    },
+    {
+      "team": "Kurdistan",
+      "elo": 1567.2022504594006,
+      "last_match": "2013-06-28"
+    },
+    {
+      "team": "Qatar",
+      "elo": 1566.950441834747,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Menorca",
+      "elo": 1566.2252835238326,
+      "last_match": "2023-07-13"
+    },
+    {
+      "team": "Artsakh",
+      "elo": 1556.0689659110146,
+      "last_match": "2019-06-08"
+    },
+    {
+      "team": "Corsica",
+      "elo": 1556.0306903358387,
+      "last_match": "2017-05-26"
+    },
+    {
+      "team": "China PR",
+      "elo": 1553.5795867070196,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Yorkshire",
+      "elo": 1553.220076865479,
+      "last_match": "2019-06-01"
+    },
+    {
+      "team": "Chameria",
+      "elo": 1553.1162185008482,
+      "last_match": "2023-07-01"
+    },
+    {
+      "team": "Zambia",
+      "elo": 1550.8918629266811,
+      "last_match": "2026-03-31"
+    },
+    {
+      "team": "Quebec",
+      "elo": 1546.3068561893203,
+      "last_match": "2013-06-27"
+    },
+    {
+      "team": "Arameans Suryoye",
+      "elo": 1545.5080634138621,
+      "last_match": "2014-06-08"
+    },
+    {
+      "team": "Cascadia",
+      "elo": 1545.199192018819,
+      "last_match": "2019-05-25"
+    },
+    {
+      "team": "Bahrain",
+      "elo": 1541.9340613212507,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Benin",
+      "elo": 1539.874269180575,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Gambia",
+      "elo": 1539.5385718533823,
+      "last_match": "2026-05-29"
+    },
+    {
+      "team": "Bulgaria",
+      "elo": 1539.411564153155,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Trinidad and Tobago",
+      "elo": 1537.9986240030266,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Zanzibar",
+      "elo": 1535.0788467978107,
+      "last_match": "2025-01-13"
+    },
+    {
+      "team": "Thailand",
+      "elo": 1534.87561506621,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Libya",
+      "elo": 1531.1131651505414,
+      "last_match": "2026-03-31"
+    },
+    {
+      "team": "Maule Sur",
+      "elo": 1528.345836909456,
+      "last_match": "2022-06-19"
+    },
+    {
+      "team": "Galicia",
+      "elo": 1527.6902975538053,
+      "last_match": "2024-05-21"
+    },
+    {
+      "team": "Gabon",
+      "elo": 1522.2487990898862,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Asturias",
+      "elo": 1520.5297736017358,
+      "last_match": "1923-02-25"
+    },
+    {
+      "team": "Montenegro",
+      "elo": 1519.697334336998,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Guadeloupe",
+      "elo": 1518.6479154551866,
+      "last_match": "2025-06-24"
+    },
+    {
+      "team": "Western Armenia",
+      "elo": 1518.2253722424032,
+      "last_match": "2019-06-09"
+    },
+    {
+      "team": "Surrey",
+      "elo": 1516.2094799886936,
+      "last_match": "2018-05-06"
+    },
+    {
+      "team": "Canary Islands",
+      "elo": 1515.2519290131381,
+      "last_match": "2007-12-29"
+    },
+    {
+      "team": "Biafra",
+      "elo": 1514.755297788312,
+      "last_match": "2022-05-25"
+    },
+    {
+      "team": "Elba Island",
+      "elo": 1514.311601162222,
+      "last_match": "2022-07-16"
+    },
+    {
+      "team": "Parishes of Jersey",
+      "elo": 1513.8720488234878,
+      "last_match": "2019-06-02"
+    },
+    {
+      "team": "Uganda",
+      "elo": 1513.5467853819746,
+      "last_match": "2025-12-30"
+    },
+    {
+      "team": "Donetsk PR",
+      "elo": 1511.7951244403553,
+      "last_match": "2017-08-31"
+    },
+    {
+      "team": "Madagascar",
+      "elo": 1510.6946387207408,
+      "last_match": "2026-06-02"
+    },
+    {
+      "team": "Tahiti",
+      "elo": 1509.950831302224,
+      "last_match": "2025-03-21"
+    },
+    {
+      "team": "Kazakhstan",
+      "elo": 1508.5502799763071,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Mapuche",
+      "elo": 1508.4707999873015,
+      "last_match": "2022-06-18"
+    },
+    {
+      "team": "Crimea",
+      "elo": 1507.6576723649607,
+      "last_match": "2006-11-25"
+    },
+    {
+      "team": "Felvid\u00e9k",
+      "elo": 1507.3462963954833,
+      "last_match": "2017-06-09"
+    },
+    {
+      "team": "Silesia",
+      "elo": 1506.8592881540997,
+      "last_match": "2006-12-09"
+    },
+    {
+      "team": "Indonesia",
+      "elo": 1504.7404164728189,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Brittany",
+      "elo": 1504.3299590640067,
+      "last_match": "2013-05-28"
+    },
+    {
+      "team": "Nicaragua",
+      "elo": 1504.1420956063703,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Shetland",
+      "elo": 1503.1329666383563,
+      "last_match": "2025-07-17"
+    },
+    {
+      "team": "United Koreans in Japan",
+      "elo": 1501.5107721931117,
+      "last_match": "2018-06-09"
+    },
+    {
+      "team": "D\u00e9lvid\u00e9k",
+      "elo": 1500.2083504465731,
+      "last_match": "2016-08-03"
+    },
+    {
+      "team": "Niger",
+      "elo": 1498.9939581673493,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "Togo",
+      "elo": 1496.2686471608115,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Central Spain",
+      "elo": 1495.317158400716,
+      "last_match": "1923-11-25"
+    },
+    {
+      "team": "Mozambique",
+      "elo": 1494.9742172006668,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Saugeais",
+      "elo": 1494.7336700370713,
+      "last_match": "2013-06-29"
+    },
+    {
+      "team": "Sz\u00e9kely Land",
+      "elo": 1494.6471620262546,
+      "last_match": "2023-07-02"
+    },
+    {
+      "team": "El Salvador",
+      "elo": 1494.5206778054517,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Greenland",
+      "elo": 1494.1022863620447,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "North Korea",
+      "elo": 1493.9971207514252,
+      "last_match": "2025-06-10"
+    },
+    {
+      "team": "Guyana",
+      "elo": 1490.8876254566087,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Cilento",
+      "elo": 1490.531336803492,
+      "last_match": "2011-12-29"
+    },
+    {
+      "team": "Madrid",
+      "elo": 1489.492523229886,
+      "last_match": "2013-06-07"
+    },
+    {
+      "team": "Luhansk PR",
+      "elo": 1489.1603241981684,
+      "last_match": "2019-12-08"
+    },
+    {
+      "team": "North Vietnam",
+      "elo": 1488.0606938379235,
+      "last_match": "1970-09-20"
+    },
+    {
+      "team": "Comoros",
+      "elo": 1486.5714405477715,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Seborga",
+      "elo": 1486.42718940077,
+      "last_match": "2014-08-10"
+    },
+    {
+      "team": "Sealand",
+      "elo": 1483.7133343502308,
+      "last_match": "2014-08-10"
+    },
+    {
+      "team": "Yoruba Nation",
+      "elo": 1483.5301084463504,
+      "last_match": "2022-05-23"
+    },
+    {
+      "team": "Matabeleland",
+      "elo": 1482.6044412542647,
+      "last_match": "2022-05-25"
+    },
+    {
+      "team": "Malaysia",
+      "elo": 1482.439694707344,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Republic of St. Pauli",
+      "elo": 1480.9366435280472,
+      "last_match": "2006-06-03"
+    },
+    {
+      "team": "Martinique",
+      "elo": 1478.9182015645827,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "S\u00e1pmi",
+      "elo": 1478.7806827483657,
+      "last_match": "2023-07-16"
+    },
+    {
+      "team": "Franconia",
+      "elo": 1478.136108982985,
+      "last_match": "2019-06-25"
+    },
+    {
+      "team": "Somaliland",
+      "elo": 1476.6016494202336,
+      "last_match": "2019-05-04"
+    },
+    {
+      "team": "Zimbabwe",
+      "elo": 1476.0892675173016,
+      "last_match": "2026-05-30"
+    },
+    {
+      "team": "South Ossetia",
+      "elo": 1475.8977445245375,
+      "last_match": "2019-12-08"
+    },
+    {
+      "team": "Sudan",
+      "elo": 1475.7394302886391,
+      "last_match": "2026-01-03"
+    },
+    {
+      "team": "Kuwait",
+      "elo": 1475.6614902234292,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Dominican Republic",
+      "elo": 1474.9662130357667,
+      "last_match": "2026-06-03"
+    },
+    {
+      "team": "Ry\u016bky\u016b",
+      "elo": 1474.420376865309,
+      "last_match": "2016-11-26"
+    },
+    {
+      "team": "West Papua",
+      "elo": 1474.3322411145043,
+      "last_match": "2022-11-13"
+    },
+    {
+      "team": "\u00c5land Islands",
+      "elo": 1473.5405388176891,
+      "last_match": "2023-07-13"
+    },
+    {
+      "team": "Kenya",
+      "elo": 1471.7199145633303,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Sierra Leone",
+      "elo": 1471.0434733754446,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Vietnam",
+      "elo": 1469.3166246398152,
+      "last_match": "2026-03-26"
+    },
+    {
+      "team": "South Yemen",
+      "elo": 1468.8276539533813,
+      "last_match": "1982-11-25"
+    },
+    {
+      "team": "Gozo",
+      "elo": 1467.7715539858616,
+      "last_match": "2025-07-17"
+    },
+    {
+      "team": "Rouet-Provence",
+      "elo": 1465.3787276922942,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Romani people",
+      "elo": 1463.3082045446795,
+      "last_match": "2016-05-16"
+    },
+    {
+      "team": "Aymara",
+      "elo": 1463.1833631032425,
+      "last_match": "2022-06-19"
+    },
+    {
+      "team": "Luxembourg",
+      "elo": 1461.5768705910866,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Hmong",
+      "elo": 1461.0651321612208,
+      "last_match": "2023-08-08"
+    },
+    {
+      "team": "Provence",
+      "elo": 1459.2860152696423,
+      "last_match": "2013-06-28"
+    },
+    {
+      "team": "Kabylia",
+      "elo": 1455.799809231496,
+      "last_match": "2018-06-09"
+    },
+    {
+      "team": "East Turkestan",
+      "elo": 1455.1689453990475,
+      "last_match": "2025-07-04"
+    },
+    {
+      "team": "Mayotte",
+      "elo": 1454.8565671228966,
+      "last_match": "2023-08-26"
+    },
+    {
+      "team": "Papua New Guinea",
+      "elo": 1454.1684086620262,
+      "last_match": "2025-11-23"
+    },
+    {
+      "team": "Kyrgyzstan",
+      "elo": 1453.4313097416098,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Chechnya",
+      "elo": 1451.28111836102,
+      "last_match": "2006-02-18"
+    },
+    {
+      "team": "Rwanda",
+      "elo": 1448.363226112482,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Saarland",
+      "elo": 1446.4901254502204,
+      "last_match": "1956-06-06"
+    },
+    {
+      "team": "Monaco",
+      "elo": 1445.274594764239,
+      "last_match": "2017-04-29"
+    },
+    {
+      "team": "Mauritania",
+      "elo": 1445.1735911616556,
+      "last_match": "2026-06-08"
+    },
+    {
+      "team": "Equatorial Guinea",
+      "elo": 1444.873881374461,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Gotland",
+      "elo": 1444.2766499723937,
+      "last_match": "2017-06-29"
+    },
+    {
+      "team": "Faroe Islands",
+      "elo": 1444.1479432467481,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Lebanon",
+      "elo": 1442.6317976231328,
+      "last_match": "2025-11-26"
+    },
+    {
+      "team": "Vanuatu",
+      "elo": 1441.4715671848871,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Tajikistan",
+      "elo": 1438.2254570971363,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Malawi",
+      "elo": 1438.2018374882273,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Liberia",
+      "elo": 1437.701159916885,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Western Isles",
+      "elo": 1436.141728499556,
+      "last_match": "2025-07-17"
+    },
+    {
+      "team": "Armenia",
+      "elo": 1430.6789778371678,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Manchukuo",
+      "elo": 1430.3535518953388,
+      "last_match": "1942-08-09"
+    },
+    {
+      "team": "G\u0103g\u0103uzia",
+      "elo": 1429.7769716281332,
+      "last_match": "2006-11-21"
+    },
+    {
+      "team": "Niue",
+      "elo": 1427.2462987524664,
+      "last_match": "1983-08-22"
+    },
+    {
+      "team": "Estonia",
+      "elo": 1425.9448295567029,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Namibia",
+      "elo": 1424.0180948788513,
+      "last_match": "2026-03-28"
+    },
+    {
+      "team": "Fiji",
+      "elo": 1423.7398900968003,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Palau",
+      "elo": 1421.5555201947568,
+      "last_match": "1998-08-01"
+    },
+    {
+      "team": "French Guiana",
+      "elo": 1420.6068758197362,
+      "last_match": "2024-11-19"
+    },
+    {
+      "team": "Lesotho",
+      "elo": 1418.8087069238418,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Tanzania",
+      "elo": 1417.945680923683,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "Marshall Islands",
+      "elo": 1416.916747839394,
+      "last_match": "2025-08-16"
+    },
+    {
+      "team": "Cuba",
+      "elo": 1413.4493148862935,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "Saint Barth\u00e9lemy",
+      "elo": 1412.4920946322322,
+      "last_match": "2023-03-10"
+    },
+    {
+      "team": "Vatican City",
+      "elo": 1410.2939375328592,
+      "last_match": "2022-04-22"
+    },
+    {
+      "team": "Canton Ticino",
+      "elo": 1406.3408524715414,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Two Sicilies",
+      "elo": 1404.3368175591395,
+      "last_match": "2023-07-02"
+    },
+    {
+      "team": "Western Sahara",
+      "elo": 1400.0124710177881,
+      "last_match": "2013-06-28"
+    },
+    {
+      "team": "Orkney",
+      "elo": 1397.3230172766093,
+      "last_match": "2025-07-17"
+    },
+    {
+      "team": "Western Australia",
+      "elo": 1395.3580585128507,
+      "last_match": "1980-11-25"
+    },
+    {
+      "team": "Azerbaijan",
+      "elo": 1393.0551955630017,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Ethiopia",
+      "elo": 1392.664817217893,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Ambazonia",
+      "elo": 1389.0954724012859,
+      "last_match": "2007-06-07"
+    },
+    {
+      "team": "Botswana",
+      "elo": 1387.6082053967789,
+      "last_match": "2026-03-31"
+    },
+    {
+      "team": "Turkmenistan",
+      "elo": 1387.605299877806,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Burundi",
+      "elo": 1387.5199155822547,
+      "last_match": "2026-05-26"
+    },
+    {
+      "team": "Raetia",
+      "elo": 1384.9163616379215,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Cyprus",
+      "elo": 1373.0172587742588,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Solomon Islands",
+      "elo": 1371.059938573622,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Central African Republic",
+      "elo": 1362.3773188192545,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Guinea-Bissau",
+      "elo": 1361.3984465321803,
+      "last_match": "2026-03-31"
+    },
+    {
+      "team": "Chagos Islands",
+      "elo": 1359.325222238075,
+      "last_match": "2019-12-29"
+    },
+    {
+      "team": "Barawa",
+      "elo": 1358.7918304168627,
+      "last_match": "2019-05-25"
+    },
+    {
+      "team": "Yemen DPR",
+      "elo": 1354.8153374817973,
+      "last_match": "1989-11-05"
+    },
+    {
+      "team": "Puerto Rico",
+      "elo": 1352.8412149392589,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Malta",
+      "elo": 1352.2807175919675,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Saint Vincent and the Grenadines",
+      "elo": 1352.1229577281772,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "Saint Helena",
+      "elo": 1348.523675429101,
+      "last_match": "2023-07-13"
+    },
+    {
+      "team": "Vietnam Republic",
+      "elo": 1346.908908353029,
+      "last_match": "1975-03-23"
+    },
+    {
+      "team": "Hitra",
+      "elo": 1343.1261238383354,
+      "last_match": "2025-07-17"
+    },
+    {
+      "team": "Saare County",
+      "elo": 1340.9516770719395,
+      "last_match": "2017-06-29"
+    },
+    {
+      "team": "Philippines",
+      "elo": 1340.7436064791298,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Lithuania",
+      "elo": 1336.1813982230997,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Bermuda",
+      "elo": 1336.089139059811,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Latvia",
+      "elo": 1333.54268241606,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Congo",
+      "elo": 1329.877738368689,
+      "last_match": "2025-10-14"
+    },
+    {
+      "team": "Micronesia",
+      "elo": 1329.0130860184695,
+      "last_match": "2003-07-07"
+    },
+    {
+      "team": "Sark",
+      "elo": 1327.8141408677343,
+      "last_match": "2003-07-03"
+    },
+    {
+      "team": "Moldova",
+      "elo": 1325.4829741603291,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Eswatini",
+      "elo": 1316.5382442251491,
+      "last_match": "2025-10-13"
+    },
+    {
+      "team": "Hong Kong",
+      "elo": 1313.2804731698056,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Saint Martin",
+      "elo": 1309.6053267814304,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "Yemen",
+      "elo": 1307.2196830222508,
+      "last_match": "2025-11-26"
+    },
+    {
+      "team": "Sint Maarten",
+      "elo": 1296.7124965116157,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Wallis Islands and Futuna",
+      "elo": 1296.4166136342076,
+      "last_match": "1995-08-20"
+    },
+    {
+      "team": "Singapore",
+      "elo": 1294.8596761163622,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Saint Pierre and Miquelon",
+      "elo": 1287.162748637788,
+      "last_match": "2012-09-28"
+    },
+    {
+      "team": "Belize",
+      "elo": 1286.3069811614102,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Grenada",
+      "elo": 1286.2399830774477,
+      "last_match": "2026-05-16"
+    },
+    {
+      "team": "Darfur",
+      "elo": 1275.4736555064264,
+      "last_match": "2014-06-07"
+    },
+    {
+      "team": "South Sudan",
+      "elo": 1270.698170701873,
+      "last_match": "2025-11-25"
+    },
+    {
+      "team": "Tibet",
+      "elo": 1267.9145176685665,
+      "last_match": "2025-07-03"
+    },
+    {
+      "team": "Saint Kitts and Nevis",
+      "elo": 1263.3505421267078,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Samoa",
+      "elo": 1249.4474951935085,
+      "last_match": "2024-11-18"
+    },
+    {
+      "team": "Chad",
+      "elo": 1246.636018945721,
+      "last_match": "2025-11-17"
+    },
+    {
+      "team": "India",
+      "elo": 1237.7183503402387,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Kiribati",
+      "elo": 1234.5353552947392,
+      "last_match": "2011-09-05"
+    },
+    {
+      "team": "Montserrat",
+      "elo": 1228.67958214133,
+      "last_match": "2025-06-10"
+    },
+    {
+      "team": "Tuvalu",
+      "elo": 1217.6741421336235,
+      "last_match": "2023-11-30"
+    },
+    {
+      "team": "Saint Lucia",
+      "elo": 1214.937804237457,
+      "last_match": "2026-03-27"
+    },
+    {
+      "team": "Falkland Islands",
+      "elo": 1214.4784062884623,
+      "last_match": "2023-07-13"
+    },
+    {
+      "team": "Mauritius",
+      "elo": 1208.3672553104138,
+      "last_match": "2025-10-13"
+    },
+    {
+      "team": "Aruba",
+      "elo": 1206.5234662735156,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Eritrea",
+      "elo": 1196.9857138543136,
+      "last_match": "2019-09-10"
+    },
+    {
+      "team": "Fr\u00f8ya",
+      "elo": 1194.5496308463187,
+      "last_match": "2025-07-17"
+    },
+    {
+      "team": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+      "elo": 1181.5709090705875,
+      "last_match": "2025-10-13"
+    },
+    {
+      "team": "Afghanistan",
+      "elo": 1173.4786197391013,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "Dominica",
+      "elo": 1162.734628744163,
+      "last_match": "2026-03-30"
+    },
+    {
+      "team": "Cook Islands",
+      "elo": 1146.9356305338497,
+      "last_match": "2024-09-06"
+    },
+    {
+      "team": "Andorra",
+      "elo": 1145.5120491423352,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Myanmar",
+      "elo": 1136.3619768063304,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Bangladesh",
+      "elo": 1132.6758532979075,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Gibraltar",
+      "elo": 1129.8623655277772,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Pakistan",
+      "elo": 1121.3195255285634,
+      "last_match": "2026-06-10"
+    },
+    {
+      "team": "Barbados",
+      "elo": 1121.2030932569835,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "Bonaire",
+      "elo": 1114.9812355987592,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Nepal",
+      "elo": 1103.7733181146548,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Antigua and Barbuda",
+      "elo": 1102.7920854664414,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Cambodia",
+      "elo": 1077.6175129234427,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Alderney",
+      "elo": 1076.9191957515625,
+      "last_match": "2022-04-23"
+    },
+    {
+      "team": "Djibouti",
+      "elo": 1075.319568076634,
+      "last_match": "2025-11-26"
+    },
+    {
+      "team": "Tonga",
+      "elo": 1072.661641911096,
+      "last_match": "2024-09-09"
+    },
+    {
+      "team": "Somalia",
+      "elo": 1060.716200385533,
+      "last_match": "2025-11-26"
+    },
+    {
+      "team": "Chinese Taipei",
+      "elo": 1059.4403992561627,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Cayman Islands",
+      "elo": 1037.535861097835,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "British Virgin Islands",
+      "elo": 1021.3764816125721,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Sri Lanka",
+      "elo": 1011.9919984494967,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Seychelles",
+      "elo": 1010.9720112619717,
+      "last_match": "2025-10-14"
+    },
+    {
+      "team": "Maldives",
+      "elo": 997.8398310308,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Mongolia",
+      "elo": 981.7620851651079,
+      "last_match": "2026-06-05"
+    },
+    {
+      "team": "Liechtenstein",
+      "elo": 976.7457557916474,
+      "last_match": "2026-06-07"
+    },
+    {
+      "team": "Guam",
+      "elo": 976.4751449979285,
+      "last_match": "2026-06-06"
+    },
+    {
+      "team": "Turks and Caicos Islands",
+      "elo": 975.0132937686453,
+      "last_match": "2025-08-16"
+    },
+    {
+      "team": "Northern Mariana Islands",
+      "elo": 969.5750185852733,
+      "last_match": "2024-04-07"
+    },
+    {
+      "team": "United States Virgin Islands",
+      "elo": 964.5184843543514,
+      "last_match": "2026-03-28"
+    },
+    {
+      "team": "Bahamas",
+      "elo": 943.7244564494624,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "Laos",
+      "elo": 938.9537289899387,
+      "last_match": "2025-11-19"
+    },
+    {
+      "team": "American Samoa",
+      "elo": 931.5683891865865,
+      "last_match": "2026-03-28"
+    },
+    {
+      "team": "San Marino",
+      "elo": 910.3722697015664,
+      "last_match": "2026-06-09"
+    },
+    {
+      "team": "Timor-Leste",
+      "elo": 904.9805975077933,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Brunei",
+      "elo": 890.9984377589586,
+      "last_match": "2025-11-18"
+    },
+    {
+      "team": "Anguilla",
+      "elo": 890.7912047997917,
+      "last_match": "2026-03-29"
+    },
+    {
+      "team": "Bhutan",
+      "elo": 860.3709540947773,
+      "last_match": "2026-06-04"
+    },
+    {
+      "team": "Macau",
+      "elo": 839.3413882170034,
+      "last_match": "2026-03-29"
+    }
+  ]
+}

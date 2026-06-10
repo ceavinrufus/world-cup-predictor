@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "generated_at": "2026-06-10T22:00:00+07:00",
+    "training_cutoff": "2026-06-10",
+    "n_simulations": 25000,
+    "seed": 20260611,
+    "blend_lambda": 0.4,
+    "half_life_days": 730.0,
+    "min_matches_per_team": 8,
+    "lookback_years": 6,
+    "n_training_matches": 6031,
+    "n_teams_in_dc_fit": 218
+  },
+  "bracket": {
+    "round_of_32": [
+      {
+        "match": "R32_M73",
+        "home": "South Korea",
+        "away": "Canada",
+        "p_this_pairing": 0.14068
+      },
+      {
+        "match": "R32_M74",
+        "home": "Germany",
+        "away": "Scotland",
+        "p_this_pairing": 0.11008
+      },
+      {
+        "match": "R32_M75",
+        "home": "Netherlands",
+        "away": "Morocco",
+        "p_this_pairing": 0.19944
+      },
+      {
+        "match": "R32_M76",
+        "home": "Brazil",
+        "away": "Japan",
+        "p_this_pairing": 0.20932
+      },
+      {
+        "match": "R32_M77",
+        "home": "France",
+        "away": "Sweden",
+        "p_this_pairing": 0.1078
+      },
+      {
+        "match": "R32_M78",
+        "home": "Ecuador",
+        "away": "Norway",
+        "p_this_pairing": 0.14652
+      },
+      {
+        "match": "R32_M79",
+        "home": "Mexico",
+        "away": "Ivory Coast",
+        "p_this_pairing": 0.12
+      },
+      {
+        "match": "R32_M80",
+        "home": "England",
+        "away": "Uzbekistan",
+        "p_this_pairing": 0.1306
+      },
+      {
+        "match": "R32_M81",
+        "home": "T\u00fcrkiye",
+        "away": "Bosnia and Herzegovina",
+        "p_this_pairing": 0.09012
+      },
+      {
+        "match": "R32_M82",
+        "home": "Belgium",
+        "away": "Czech Republic",
+        "p_this_pairing": 0.12648
+      },
+      {
+        "match": "R32_M83",
+        "home": "Colombia",
+        "away": "Croatia",
+        "p_this_pairing": 0.17464
+      },
+      {
+        "match": "R32_M84",
+        "home": "Spain",
+        "away": "Austria",
+        "p_this_pairing": 0.29496
+      },
+      {
+        "match": "R32_M85",
+        "home": "Switzerland",
+        "away": "Egypt",
+        "p_this_pairing": 0.10432
+      },
+      {
+        "match": "R32_M86",
+        "home": "Argentina",
+        "away": "Uruguay",
+        "p_this_pairing": 0.43784
+      },
+      {
+        "match": "R32_M87",
+        "home": "Portugal",
+        "away": "Panama",
+        "p_this_pairing": 0.11532
+      },
+      {
+        "match": "R32_M88",
+        "home": "Paraguay",
+        "away": "Iran",
+        "p_this_pairing": 0.08748
+      }
+    ],
+    "round_of_16": [
+      {
+        "match": "R16_M1",
+        "home": "Switzerland",
+        "away": "Germany",
+        "p_this_pairing": 0.07876
+      },
+      {
+        "match": "R16_M2",
+        "home": "Morocco",
+        "away": "Brazil",
+        "p_this_pairing": 0.13124
+      },
+      {
+        "match": "R16_M3",
+        "home": "France",
+        "away": "Norway",
+        "p_this_pairing": 0.11584
+      },
+      {
+        "match": "R16_M4",
+        "home": "Mexico",
+        "away": "England",
+        "p_this_pairing": 0.15884
+      },
+      {
+        "match": "R16_M5",
+        "home": "T\u00fcrkiye",
+        "away": "Belgium",
+        "p_this_pairing": 0.07056
+      },
+      {
+        "match": "R16_M6",
+        "home": "Croatia",
+        "away": "Spain",
+        "p_this_pairing": 0.12952
+      },
+      {
+        "match": "R16_M7",
+        "home": "Switzerland",
+        "away": "Argentina",
+        "p_this_pairing": 0.16952
+      },
+      {
+        "match": "R16_M8",
+        "home": "Portugal",
+        "away": "Iran",
+        "p_this_pairing": 0.0564
+      }
+    ],
+    "quarter_finals": [
+      {
+        "match": "QF_M1",
+        "home": "Germany",
+        "away": "Brazil",
+        "p_this_pairing": 0.07236
+      },
+      {
+        "match": "QF_M2",
+        "home": "France",
+        "away": "England",
+        "p_this_pairing": 0.11968
+      },
+      {
+        "match": "QF_M3",
+        "home": "Belgium",
+        "away": "Spain",
+        "p_this_pairing": 0.0962
+      },
+      {
+        "match": "QF_M4",
+        "home": "Argentina",
+        "away": "Portugal",
+        "p_this_pairing": 0.10152
+      }
+    ],
+    "semi_finals": [
+      {
+        "match": "SF_M1",
+        "home": "Brazil",
+        "away": "France",
+        "p_this_pairing": 0.05876
+      },
+      {
+        "match": "SF_M2",
+        "home": "Spain",
+        "away": "Argentina",
+        "p_this_pairing": 0.11036
+      }
+    ],
+    "final": [
+      {
+        "match": "FINAL",
+        "home": "France",
+        "away": "Argentina",
+        "p_this_pairing": 0.03792
+      }
+    ]
+  }
+}

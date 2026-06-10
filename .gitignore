@@ -34,3 +34,8 @@ models/*.pkl
 outputs/*.json
 outputs/*.csv
 !outputs/blend_sweep.csv
+!outputs/predictions_summary.json
+!outputs/group_standings.json
+!outputs/match_predictions.json
+!outputs/elo_snapshot.json
+!outputs/modal_bracket.json
