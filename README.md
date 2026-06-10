@@ -70,7 +70,96 @@ Fits are re-run per training window (no peeking): fit on data prior to
 each tournament opener, predict on that WC's matches, average log-loss
 across WC 2018 and WC 2022. Random baseline: log(3) ≈ 1.099.
 
-_(Backtest table added in a follow-up commit.)_
+    half_life  lambda   avg log-loss   WC2018    WC2022    n
+       730       0.4      0.9872       0.9536    1.0208   152
+       730       0.3      0.9873       0.9515    1.0231   152
+       730       0.5      0.9881       0.9568    1.0195   152
+       365       0.5      0.9906       0.9573    1.0239   152
+       180       0.5      0.9921       —         —        152
+        90       0.7      0.9925       —         —        152
+
+Pure Dixon-Coles at hl=90 gets 1.0515; pure Elo gets 1.0108; the
+blend beats both. Long half-life + moderate Elo weight (λ=0.4) wins,
+which makes sense — Elo already captures short-term form through
+K-factors, so DC's contribution is the goal-distribution shape and
+home advantage.
+
+Full sweep in `outputs/blend_sweep.csv`.
+
+## Top-line results
+
+25k Monte Carlo simulations, model frozen at 2026-06-10 (tournament
+opener 2026-06-11 in Mexico City).  Host advantage is applied: full
+γ for host home matches in the group stage, half-γ in knockouts.
+
+**Champion probability, top 10:**
+
+| Team       |    P |
+|------------|-----:|
+| Argentina  | 17.6% |
+| Spain      | 15.6% |
+| England    |  8.0% |
+| France     |  7.8% |
+| Brazil     |  6.7% |
+| Portugal   |  5.3% |
+| Colombia   |  4.9% |
+| Germany    |  3.6% |
+| Ecuador    |  3.4% |
+| Morocco    |  3.0% |
+
+**Group top-2 picks (probability to advance):**
+
+| Group | 1st | 2nd |
+|-------|-----|-----|
+| A | Mexico (84%) | South Korea (53%) |
+| B | Switzerland (89%) | Canada (87%) |
+| C | Brazil (87%) | Morocco (75%) |
+| D | Türkiye (56%) | United States (50%) |
+| E | Germany (83%) | Ecuador (77%) |
+| F | Netherlands (79%) | Japan (76%) |
+| G | Belgium (82%) | Iran (60%) |
+| H | Spain (97%) | Uruguay (79%) |
+| I | France (83%) | Norway (63%) |
+| J | Argentina (93%) | Austria (50%) |
+| K | Portugal (82%) | Colombia (80%) |
+| L | England (92%) | Croatia (78%) |
+
+**Modal bracket.**  The single most-probable pairing in each slot,
+picked independently per round.  These are not jointly the *most-
+likely path* through the tournament — they're each round's most-
+likely fixture given all upstream uncertainty.
+
+Round of 32 (all 16 matches in `outputs/modal_bracket.json`), a few
+of the most-locked-in:
+
+- M75: Netherlands vs Morocco (19.9%)
+- M76: Brazil vs Japan (20.9%)
+- M84: Spain vs Austria (29.5%)
+- M86: Argentina vs Uruguay (43.8%)
+
+Round of 16:
+
+- M4: Mexico vs England (15.9%)
+- M7: Switzerland vs Argentina (17.0%)
+- M2: Morocco vs Brazil (13.1%)
+
+Quarter-finals:
+
+- Germany vs Brazil (7.2%)
+- France vs England (12.0%)
+- Belgium vs Spain (9.6%)
+- Argentina vs Portugal (10.2%)
+
+Semi-finals:
+
+- Brazil vs France (5.9%)
+- Spain vs Argentina (11.0%)
+
+**Final: France vs Argentina (3.8% for this exact pairing).**
+
+Full outputs: `outputs/predictions_summary.json`,
+`outputs/group_standings.json`, `outputs/match_predictions.json`,
+`outputs/modal_bracket.json`.
 
 ## Layout
 
@@ -120,9 +209,12 @@ Outputs land in `outputs/`:
   many big chances but the score didn't reflect it.
 * Squad injuries / lineup availability are unmodelled. If a key player
   is out for the tournament, the model doesn't know.
-* Manager tournament experience, travel legs, altitude and climate
-  effects are unmodelled. These are small effects that we'll layer in
-  if the base model's calibration holds.
+* Host advantage is applied at the country level, not the venue level.
+  Mexico's altitude in Mexico City vs sea-level Miami is unmodelled;
+  every host home match gets the same γ.
+* Manager tournament experience, travel legs, humidity effects are
+  unmodelled. Small effects individually; we may layer some in if the
+  base model's calibration holds.
 * Elo ratings absorb long-run form but move slowly — a team that's had
   a genuine step-change in the last six months is under-rated.
 
